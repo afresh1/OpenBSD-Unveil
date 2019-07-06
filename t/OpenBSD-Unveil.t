@@ -47,7 +47,7 @@ BEGIN { use_ok('OpenBSD::Unveil') }
 		    "Usage: OpenBSD::Unveil::unveil([path, permissions]) $at",
 		    "Expected exception when not enough params"
 	}
-		
+
 	ok OpenBSD::Unveil::unveil( qw< foo bar > ), "Used two args";
 	ok OpenBSD::Unveil::unveil(),                "Used zero args";
 
