@@ -133,8 +133,7 @@ xsunveil_ok "Basic Usage" => sub {
 };
 
 xsunveil_ok "Invalid Path" => sub {
-	chdir "/tmp" or die "Unable to chdir to /tmp";
-	my $dir = File::Temp->newdir('OpenBSD-Unveil-XXXXXXXXX');
+	my $dir = File::Temp->newdir('OpenBSD-Unveil-XXXXXXXXX', TMPDIR => 1);
 	ok !OpenBSD::Unveil::_unveil("$dir/nonexist/file", 'r'),
 	    "Unable to unveil with incorrect permissions";
 	is $!, 'No such file or directory', "Expected ERRNO from _unveil";
